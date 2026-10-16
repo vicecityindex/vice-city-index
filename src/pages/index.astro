@@ -8,6 +8,17 @@ const releaseDate = "November 19, 2026";
     <h1 class="hero-title">VICE CITY<br /><span>INDEX</span></h1>
     <p class="hero-tag">Your complete guide to Leonida ahead of launch</p>
     <p class="hero-date">GTA 6 arrives {releaseDate}</p>
+
+    <div id="countdown" class="countdown">
+      <div class="count-box"><span id="days">00</span><label>Days</label></div>
+      <div class="count-box"><span id="hours">00</span><label>Hours</label></div>
+      <div class="count-box"><span id="minutes">00</span><label>Minutes</label></div>
+      <div class="count-box"><span id="seconds">00</span><label>Seconds</label></div>
+    </div>
+  </section>
+
+  <section class="intro fade-up">
+    <p>Vice City Index is your early, independent guide to everything confirmed about GTA 6 so far — characters, vehicles, weapons, the map of Leonida, and every gameplay feature revealed ahead of launch. We update constantly as Rockstar reveals more.</p>
   </section>
 
   <section class="grid">
@@ -34,10 +45,37 @@ const releaseDate = "November 19, 2026";
   </section>
 </Layout>
 
+<script>
+  const releaseDate = new Date("November 19, 2026 00:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = releaseDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    if (daysEl) daysEl.textContent = String(days).padStart(2, "0");
+    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, "0");
+    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, "0");
+    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
 <style>
   .hero {
     text-align: center;
-    padding: 4rem 0 5rem;
+    padding: 4rem 0 3rem;
   }
 
   .hero-title {
@@ -61,6 +99,50 @@ const releaseDate = "November 19, 2026";
     font-size: 1rem;
     color: var(--cyan);
     font-weight: 600;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .count-box {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    min-width: 80px;
+  }
+
+  .count-box span {
+    display: block;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--pink);
+  }
+
+  .count-box label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-dim);
+    margin-top: 0.25rem;
+  }
+
+  .intro {
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    text-align: center;
+  }
+
+  .intro p {
+    color: var(--text-dim);
+    line-height: 1.7;
   }
 
   .grid {
