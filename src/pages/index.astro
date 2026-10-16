@@ -1,11 +1,97 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const releaseDate = "November 19, 2026";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Vice City Index — GTA 6 Guide & Database" description="The ultimate GTA 6 fan guide: characters, vehicles, weapons, map, and confirmed features ahead of the November 19, 2026 launch.">
+  <section class="hero fade-up">
+    <h1 class="hero-title">VICE CITY<br /><span>INDEX</span></h1>
+    <p class="hero-tag">Your complete guide to Leonida ahead of launch</p>
+    <p class="hero-date">GTA 6 arrives {releaseDate}</p>
+  </section>
+
+  <section class="grid">
+    <a href="/characters" class="card fade-up">
+      <h2>Characters</h2>
+      <p>Jason, Lucia, and the full confirmed cast.</p>
+    </a>
+    <a href="/vehicles" class="card fade-up">
+      <h2>Vehicles</h2>
+      <p>Every car, bike, and boat spotted so far.</p>
+    </a>
+    <a href="/weapons" class="card fade-up">
+      <h2>Weapons</h2>
+      <p>Pistols, rifles, and melee weapons confirmed.</p>
+    </a>
+    <a href="/map" class="card fade-up">
+      <h2>Map</h2>
+      <p>Vice City, the Keys, and beyond.</p>
+    </a>
+    <a href="/features" class="card fade-up">
+      <h2>Features</h2>
+      <p>Heat system, dual protagonists, and more.</p>
+    </a>
+  </section>
 </Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 0 5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 9vw, 6rem);
+    font-weight: 700;
+    line-height: 0.95;
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-tag {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--text-dim);
+  }
+
+  .hero-date {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: var(--cyan);
+    font-weight: 600;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--pink);
+    box-shadow: 0 0 30px rgba(255,46,146,0.15);
+  }
+
+  .card h2 {
+    color: var(--text);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+</style>

@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const vehicles = [
+  { name: "Vapid Dominator", category: "Muscle", notes: "Classic muscle car, a GTA staple returning for Leonida." },
+  { name: "Declasse Sabre / Sabre Turbo", category: "Muscle", notes: "Turbocharged variant spotted in trailer footage." },
+  { name: "Bravado Buffalo / Buffalo STX", category: "Sports", notes: "Sport sedan with a performance STX trim." },
+  { name: "Bravado Gauntlet / Hellfire", category: "Muscle", notes: "Aggressive styling, Hellfire variant teased." },
+  { name: "Imponte Ruiner / Phoenix", category: "Muscle", notes: "Classic muscle silhouette with a Phoenix badge variant." },
+  { name: "Albany Buccaneer Custom", category: "Muscle", notes: "Custom lowrider-style build seen in gameplay reveal." },
+  { name: "Declasse Tulip M-100", category: "Classic", notes: "Vintage pickup spotted in Leonida countryside footage." },
+  { name: "Grotti Cheetah '95", category: "Super", notes: "Retro-styled supercar homage, '90s Ferrari inspired." },
+  { name: "Vapid Dominator Buggy '67", category: "Off-road", notes: "Dune buggy variant for off-road terrain." },
+  { name: "Vapid Stanier '55", category: "Classic", notes: "1950s-styled sedan, period detail for flashback scenes." },
+  { name: "Vapid Ganado", category: "SUV", notes: "Full-size SUV spotted in Vice City traffic footage." },
+  { name: "Ford Ranchero", category: "Classic", notes: "Real-world licensed classic, utility coupe." },
+];
+---
+
+<Layout title="GTA 6 Vehicles — Cars, Bikes & Boats | Vice City Index" description="A growing database of GTA 6 vehicles spotted in trailers and gameplay reveals, from muscle cars to supercars.">
+  <section class="page-head fade-up">
+    <h1>Vehicles</h1>
+    <p>An estimated 200–300 vehicles are expected at launch. This is a growing starter list — updated as more are confirmed.</p>
+  </section>
+
+  <section class="char-grid">
+    {vehicles.map((v) => (
+      <div class="char-card fade-up">
+        <h2>{v.name}</h2>
+        <span class="role">{v.category}</span>
+        <p>{v.notes}</p>
+      </div>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .page-head {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+
+  .page-head h1 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .page-head p {
+    margin-top: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .char-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .char-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cyan);
+    box-shadow: 0 0 30px rgba(0,229,255,0.15);
+  }
+
+  .char-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .role {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--pink);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .char-card p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+</style>

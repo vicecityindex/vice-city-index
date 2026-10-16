@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const regions = [
+  { name: "Vice City", notes: "The beating heart of the map — Miami-inspired metropolis with beaches, downtown, and nightlife districts." },
+  { name: "Leonida Keys", notes: "Island chain south of the city, home to Jason and Lori's early story locations." },
+  { name: "Grassrivers", notes: "Everglades-style wetlands with swamps, backroads, and rural communities." },
+  { name: "Port Gellhorn", notes: "Industrial coastal town, working-class port area outside the main city." },
+  { name: "Ambrosia", notes: "Small-town America vibe, countryside and suburbia further inland." },
+  { name: "Mount Kalaga National Park", notes: "Forested mountain region offering the game's wilderness and hiking terrain." },
+];
+---
+
+<Layout title="GTA 6 Map — All Confirmed Regions | Vice City Index" description="Every confirmed region of the GTA 6 map, from Vice City itself to the Leonida Keys and beyond.">
+  <section class="page-head fade-up">
+    <h1>Map of Leonida</h1>
+    <p>All six confirmed regions of the GTA 6 map so far.</p>
+  </section>
+
+  <section class="char-grid">
+    {regions.map((r) => (
+      <div class="char-card fade-up">
+        <h2>{r.name}</h2>
+        <p>{r.notes}</p>
+      </div>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .page-head {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+
+  .page-head h1 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .page-head p {
+    margin-top: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .char-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .char-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cyan);
+    box-shadow: 0 0 30px rgba(0,229,255,0.15);
+  }
+
+  .char-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .char-card p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+</style>

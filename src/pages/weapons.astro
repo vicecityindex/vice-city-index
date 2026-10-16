@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const weapons = [
+  { name: "Girardi ES9", category: "Pistol", notes: "Leaked name for the standard sidearm seen in trailer footage." },
+  { name: "Klose K17", category: "Pistol", notes: "Compact pistol variant, leaked naming convention." },
+  { name: "Capo", category: "Pistol", notes: "Heavier pistol model spotted in gameplay." },
+  { name: "MP5-style SMG", category: "SMG", notes: "Submachine gun, exact in-game name not yet confirmed." },
+  { name: "Duke Arms Carbine", category: "Rifle", notes: "Mid-range carbine seen in combat footage." },
+  { name: "AK-pattern Rifle", category: "Rifle", notes: "Classic assault rifle silhouette, name TBA." },
+  { name: "M16-style Rifle", category: "Rifle", notes: "Military-pattern rifle spotted in screenshots." },
+  { name: "Remington 700-style Sniper", category: "Sniper", notes: "Bolt-action sniper rifle, exact name TBA." },
+  { name: "Revolving Grenade Launcher", category: "Heavy", notes: "Multi-shot launcher seen in explosive gameplay clips." },
+  { name: "M249-style LMG", category: "Heavy", notes: "Light machine gun, confirmed via leaked footage." },
+  { name: "Wooden Bat", category: "Melee", notes: "Classic melee weapon, GTA series staple." },
+  { name: "Fists", category: "Melee", notes: "Default unarmed combat." },
+];
+---
+
+<Layout title="GTA 6 Weapons — Full Arsenal List | Vice City Index" description="Every GTA 6 weapon confirmed or leaked so far, from pistols to heavy weapons and melee.">
+  <section class="page-head fade-up">
+    <h1>Weapons</h1>
+    <p>An estimated 30–36 weapons are expected at launch. Names reflect current leaks and may change before release.</p>
+  </section>
+
+  <section class="char-grid">
+    {weapons.map((w) => (
+      <div class="char-card fade-up">
+        <h2>{w.name}</h2>
+        <span class="role">{w.category}</span>
+        <p>{w.notes}</p>
+      </div>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .page-head {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+
+  .page-head h1 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .page-head p {
+    margin-top: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .char-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .char-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cyan);
+    box-shadow: 0 0 30px rgba(0,229,255,0.15);
+  }
+
+  .char-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .role {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--pink);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .char-card p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+</style>

@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const features = [
+  { name: "Release Date", notes: "Confirmed for November 19, 2026, on PlayStation 5 and Xbox Series X|S." },
+  { name: "Heat Wanted System", notes: "Replaces the classic star system with a six-level Heat meter based on appearance and location, not just crime severity." },
+  { name: "Dual Protagonists", notes: "Play as both Jason Duval and Lucia Caminos, switching between their perspectives through the story." },
+  { name: "Car Theft Rework", notes: "Stealing cars now involves real choices — use a Slim Jim for a quiet entry or a key cloner for a cleaner getaway, each with different risk and time tradeoffs." },
+  { name: "WAiNK App", notes: "An in-game smartphone app parodying real-world services, tied into several gameplay systems." },
+  { name: "In-Game Parody Apps & Sites", notes: "A full ecosystem of satirical apps and websites accessible in-game, continuing the series' tradition of social satire." },
+  { name: "Monetization Policy", notes: "Rockstar's stance on monetizing gameplay footage and content creation remains ambiguous ahead of launch." },
+  { name: "Pre-Orders", notes: "Pre-orders are live now across both platforms." },
+];
+---
+
+<Layout title="GTA 6 Confirmed Features — Everything We Know | Vice City Index" description="All confirmed GTA 6 features so far: release date, the new Heat wanted system, dual protagonists, car theft mechanics, and more.">
+  <section class="page-head fade-up">
+    <h1>Confirmed Features</h1>
+    <p>Everything officially confirmed about GTA 6 so far, updated as Rockstar reveals more.</p>
+  </section>
+
+  <section class="char-grid">
+    {features.map((f) => (
+      <div class="char-card fade-up">
+        <h2>{f.name}</h2>
+        <p>{f.notes}</p>
+      </div>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .page-head {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+
+  .page-head h1 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .page-head p {
+    margin-top: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .char-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .char-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cyan);
+    box-shadow: 0 0 30px rgba(0,229,255,0.15);
+  }
+
+  .char-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .char-card p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+</style>

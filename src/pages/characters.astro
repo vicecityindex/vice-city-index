@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const characters = [
+  { name: "Jason Duval", role: "Protagonist", notes: "Army veteran turned drug runner in the Leonida Keys; lives rent-free in a Brian Heder property." },
+  { name: "Lucia Caminos", role: "Protagonist", notes: "First female lead in a mainline GTA since the Vice City era; just out of prison, strategic and level-headed." },
+  { name: "Brian Heder", role: "Supporting — Leonida Keys", notes: "Old-school drug runner, runs a boat yard with third wife Lori; voiced by Stephen Root." },
+  { name: "Lori", role: "Supporting — Leonida Keys", notes: "Brian Heder's wife." },
+  { name: "Cal Hampton", role: "Supporting — Leonida Keys", notes: "Confirmed name, details TBA." },
+  { name: "Boobie Ike", role: "Supporting — Vice City music scene", notes: "Confirmed name, details TBA." },
+  { name: "Dre'Quan Priest", role: "Supporting — Vice City music scene", notes: "Confirmed name, details TBA." },
+  { name: "Real Dimez", role: "Supporting — Vice City music scene", notes: "Rap duo." },
+  { name: "Raul Bautista", role: "Supporting", notes: "Bank robber, seen with a Jason-style pistol in screenshots." },
+  { name: "Bae-Luxe", role: "Supporting", notes: "Confirmed name, details TBA." },
+  { name: "Roxy", role: "Supporting", notes: "Confirmed name, details TBA." },
+  { name: "DWNPLY", role: "Supporting", notes: "Confirmed name, details TBA." },
+];
+---
+
+<Layout title="GTA 6 Characters — Full Confirmed Cast | Vice City Index" description="Every confirmed GTA 6 character so far: Jason Duval, Lucia Caminos, and the full supporting cast from Leonida.">
+  <section class="page-head fade-up">
+    <h1>Characters</h1>
+    <p>No official voice cast has been confirmed by Rockstar. Updated as new names are confirmed.</p>
+  </section>
+
+  <section class="char-grid">
+    {characters.map((c) => (
+      <div class="char-card fade-up">
+        <h2>{c.name}</h2>
+        <span class="role">{c.role}</span>
+        <p>{c.notes}</p>
+      </div>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .page-head {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+
+  .page-head h1 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    background: linear-gradient(90deg, var(--pink), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .page-head p {
+    margin-top: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .char-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .char-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--cyan);
+    box-shadow: 0 0 30px rgba(0,229,255,0.15);
+  }
+
+  .char-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .role {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--pink);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .char-card p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+</style>
